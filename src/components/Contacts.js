@@ -24,8 +24,14 @@ export class Contacts extends Component {
     ]
   };
 
-  onDeleteContact = () => {
-    console.log("parent fun");
+  onDeleteContact = id => {
+    const { contacts } = this.state;
+
+    const newContacts = contacts.filter(contact => contact.id !== id);
+
+    this.setState({
+      contacts: newContacts
+    });
   };
 
   render() {
@@ -37,7 +43,7 @@ export class Contacts extends Component {
           <Contact
             key={contact.id}
             contact={contact}
-            deleteClickhandler={this.onDeleteContact}
+            deleteClickhandler={this.onDeleteContact.bind(this, contact.id)}
           />
         ))}
       </div>
