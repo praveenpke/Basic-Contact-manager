@@ -1,29 +1,8 @@
 import React, { Component } from "react";
 import Contact from "./Contact";
-export class Contacts extends Component {
-  state = {
-    contacts: [
-      {
-        id: 1,
-        name: "John Doe",
-        email: "jd@gmail.com",
-        phone: "555-555-5555"
-      },
-      {
-        id: 2,
-        name: "James",
-        email: "jm@gmail.com",
-        phone: "551-155-5555"
-      },
-      {
-        id: 3,
-        name: "karen",
-        email: "jk@gmail.com",
-        phone: "000-555-5555"
-      }
-    ]
-  };
+import { Consumer } from "../context";
 
+export class Contacts extends Component {
   onDeleteContact = id => {
     const { contacts } = this.state;
 
@@ -35,18 +14,26 @@ export class Contacts extends Component {
   };
 
   render() {
-    const { contacts } = this.state;
-
     return (
-      <div className="container">
-        {contacts.map(contact => (
-          <Contact
-            key={contact.id}
-            contact={contact}
-            deleteClickhandler={this.onDeleteContact.bind(this, contact.id)}
-          />
-        ))}
-      </div>
+      <Consumer>
+        {value => {
+          const { contacts } = value;
+          return (
+            <div className="container">
+              {contacts.map(contact => (
+                <Contact
+                  key={contact.id}
+                  contact={contact}
+                  deleteClickhandler={this.onDeleteContact.bind(
+                    this,
+                    contact.id
+                  )}
+                />
+              ))}
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }
