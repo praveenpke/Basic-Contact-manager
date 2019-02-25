@@ -4,9 +4,14 @@ import PropTypes from "prop-types";
 const Header = props => {
   return (
     <div>
-      <h1 style={{ color: "red", fontSize: "50px" }}>{props.branding}</h1>
+      <h1 style={headingStyle}>{props.branding}</h1>
     </div>
   );
+};
+
+const headingStyle = {
+  color: "green",
+  fontSize: "50px"
 };
 
 Header.defaultProps = {
