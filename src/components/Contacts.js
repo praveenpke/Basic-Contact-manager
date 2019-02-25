@@ -24,13 +24,21 @@ export class Contacts extends Component {
     ]
   };
 
+  onDeleteContact = () => {
+    console.log("parent fun");
+  };
+
   render() {
     const { contacts } = this.state;
 
     return (
       <div className="container">
         {contacts.map(contact => (
-          <Contact key={contact.id} contact={contact} />
+          <Contact
+            key={contact.id}
+            contact={contact}
+            deleteClickhandler={this.onDeleteContact}
+          />
         ))}
       </div>
     );

@@ -27,6 +27,10 @@ export class Contact extends Component {
     console.log(this.state);
   };
 
+  deleteContactTrigger = () => {
+    this.props.deleteClickhandler();
+  };
+
   render() {
     const { name, email, phone } = this.props.contact;
     return (
@@ -49,6 +53,11 @@ export class Contact extends Component {
               />
             )}
           </span>
+          <i
+            onClick={this.deleteContactTrigger}
+            className="fas fa-times"
+            style={{ cursor: "pointer", float: "right", color: "red" }}
+          />
         </h4>
         {this.state.showCard ? (
           <ul className="list-group">
@@ -68,7 +77,8 @@ const linkCursorStyle = {
 };
 
 Contact.propTypes = {
-  contact: PropTypes.object.isRequired
+  contact: PropTypes.object.isRequired,
+  deleteClickhandler: PropTypes.func.isRequired
 };
 
 export default Contact;
