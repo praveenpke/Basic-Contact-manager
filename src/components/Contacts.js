@@ -30,12 +30,7 @@ export class Contacts extends Component {
     return (
       <div className="container">
         {contacts.map(contact => (
-          <Contact
-            key={contact.id}
-            name={contact.name}
-            phone={contact.phone}
-            email={contact.email}
-          />
+          <Contact key={contact.id} contact={contact} />
         ))}
       </div>
     );
