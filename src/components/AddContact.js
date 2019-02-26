@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Consumer } from "../context";
 import uuid from "uuid";
+import InputLayout from "./InputLayout";
 export class AddContact extends Component {
   state = {
     name: "",
@@ -47,41 +48,32 @@ export class AddContact extends Component {
                 <div className="card-header">Add Contact</div>
                 <div className="card-body">
                   <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                    <div className="form-group">
-                      <label htmlFor="name">Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        className="form-control form-control-lg"
-                        placeholder="Enter Name"
-                        value={name} //when we set a value to component it is controlled component, we need event to modify
-                        onChange={this.onInputChange}
-                      />
-                    </div>
+                    <InputLayout
+                      type="text"
+                      label="Name"
+                      name="name"
+                      placeholder="Enter Your Name"
+                      vaue={name}
+                      onChange={this.onInputChange}
+                    />
 
-                    <div className="form-group">
-                      <label htmlFor="name">Email</label>
-                      <input
-                        type="email"
-                        name="email"
-                        className="form-control form-control-lg"
-                        placeholder="Enter Email Id"
-                        value={email}
-                        onChange={this.onInputChange}
-                      />
-                    </div>
+                    <InputLayout
+                      type="email"
+                      label="Email"
+                      name="email"
+                      placeholder="Enter Email Id"
+                      vaue={email}
+                      onChange={this.onInputChange}
+                    />
 
-                    <div className="form-group">
-                      <label htmlFor="name">Phone</label>
-                      <input
-                        type="text"
-                        name="phone"
-                        className="form-control form-control-lg"
-                        placeholder="Enter Phone Number"
-                        value={phone}
-                        onChange={this.onInputChange}
-                      />
-                    </div>
+                    <InputLayout
+                      type="text"
+                      label="Phone"
+                      name="phone"
+                      placeholder="Enter Phone Number"
+                      vaue={phone}
+                      onChange={this.onInputChange}
+                    />
 
                     <input
                       type="submit"
