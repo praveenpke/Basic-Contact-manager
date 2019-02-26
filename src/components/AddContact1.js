@@ -1,25 +1,31 @@
 import React, { Component } from "react";
 
 export class AddContact extends Component {
-  state = {
-    name: "",
-    email: "",
-    phone: ""
-  };
-
-  onInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
+  constructor(props) {
+    super(props);
+    this.nameInput = React.createRef();
+    this.emailInput = React.createRef();
+    this.phoneInput = React.createRef();
+  }
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    const contact = {
+      name: this.nameInput.current.value,
+      email: this.emailInput.current.value,
+      phone: this.phoneInput.current.value
+    };
+
+    console.log(contact);
+  };
+
+  static defaultProps = {
+    name: "Fred Smith",
+    email: "fred@yahoo.com",
+    phone: "777-777-7777"
   };
 
   render() {
-    const { name, email, phone } = this.state;
+    const { name, email, phone } = this.props;
     return (
       <div className="container">
         <div className="card mb-3">
@@ -33,8 +39,8 @@ export class AddContact extends Component {
                   name="name"
                   className="form-control form-control-lg"
                   placeholder="Enter Name"
-                  value={name} //when we set a value to component it is controlled component, we need event to modify
-                  onChange={this.onInputChange}
+                  defaultValue={name} //when we set a value to component it is controlled component, we need event to modify
+                  ref={this.nameInput}
                 />
               </div>
 
@@ -45,8 +51,8 @@ export class AddContact extends Component {
                   name="email"
                   className="form-control form-control-lg"
                   placeholder="Enter Email Id"
-                  value={email}
-                  onChange={this.onInputChange}
+                  deafultValue={email}
+                  ref={this.emailInput}
                 />
               </div>
 
@@ -57,8 +63,8 @@ export class AddContact extends Component {
                   name="phone"
                   className="form-control form-control-lg"
                   placeholder="Enter Phone Number"
-                  value={phone}
-                  onChange={this.onInputChange}
+                  defaultValue={phone}
+                  ref={this.phoneInput}
                 />
               </div>
 

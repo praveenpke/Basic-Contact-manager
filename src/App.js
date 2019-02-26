@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Contacts from "./components/Contacts";
 import Header from "./components/Header";
-import AddContact from "./components/AddContact";
+import AddContact1 from "./components/AddContact1";
 import { Provider } from "./context";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,7 +13,7 @@ class App extends Component {
       <Provider>
         <div className="App">
           <Header branding="Contact Manager" />
-          <AddContact />
+          <AddContact1 />
           <Contacts />
         </div>
       </Provider>
